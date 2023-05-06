@@ -1,13 +1,17 @@
 'use strict';
 
 const btnRoll = document.querySelector('.btn--roll');
-const dice = document.querySelector('.dice');
+const btnHold = document.querySelector('.btn--hold');
+const diceImg = document.querySelector('.dice');
+const scorePlayer1 = document.getElementById('score--0');
 
 let currentScorePlayer1 = document.getElementById('current--0');
 
+scorePlayer1.textContent = '0';
+
 const rollDice = function () {
   const rollDiceNumber = Math.trunc(Math.random() * 6) + 1;
-  dice.src = `dice-${rollDiceNumber}.png`;
+  diceImg.src = `dice-${rollDiceNumber}.png`;
   if (rollDiceNumber === 1) {
     currentScorePlayer1.textContent = '0';
   } else {
@@ -18,3 +22,11 @@ const rollDice = function () {
 };
 
 btnRoll.addEventListener('click', rollDice);
+
+const holdScore = function () {
+  scorePlayer1.textContent =
+    Number(scorePlayer1.textContent) + Number(currentScorePlayer1.textContent);
+  currentScorePlayer1.textContent = '0';
+};
+
+btnHold.addEventListener('click', holdScore);
