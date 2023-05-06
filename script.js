@@ -83,11 +83,20 @@ btnHold.addEventListener('click', holdScore);
 
 //new game function
 const newGame = () => {
-  scores = [0, 0];
+  activePlayer = 0;
+  currentScore = 0;
+  totalScorePlayer0.textContent = 0;
+  totalScorePlayer1.textContent = 0;
   currentScorePlayer0.textContent = 0;
   currentScorePlayer1.textContent = 0;
+  scores[0] = 0;
+  scores[1] = 0;
+  backgroundPlayer0.classList.remove('player--winner');
+  backgroundPlayer1.classList.remove('player--winner');
+  backgroundPlayer0.classList.add('player--active');
+  backgroundPlayer1.classList.remove('player--active');
   diceImg.style = 'display: none';
-  activePlayer = 0;
+  playing = true;
 };
 
 btnNewGame.addEventListener('click', newGame);
